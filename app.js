@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const Student = require("./models/Students");
 const app = express();
 require("./db/db.config");
+dotenv.config()
 
 //middlewares
 app.use(cors());
@@ -79,9 +80,9 @@ app.put("/student/:id", (req, res) => {
       res.status(500).json({ msg: "error occurred" });
     });
 });
-
+const port = process.env.PORT || 5000;
 //server
-app.listen(5000, () => {
+app.listen(port, () => {
   console.log("server was connected on port:5000");
 });
 
